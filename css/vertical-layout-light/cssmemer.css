@@ -1,0 +1,95 @@
+#formRegisto .form-group{
+    position: relative;
+    margin: 32px 0;
+}
+#formRegisto .form-control{
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-width: 0 0 2px 0;
+    line-height: 26px;
+    font-weight: 400;
+}
+#formRegisto .form-control:focus{
+    outline: none;
+}
+#formRegisto #lbl{
+    position: absolute;
+    left: 20px;
+    bottom: 26px;
+    line-height: 26px;
+    cursor: text;
+    font-size: 16px;
+    transition: transform 0.2s ease-in-out ;
+    color: rgb(70, 63, 63);
+}
+#formRegisto .form-control:focus + #lbl,#formRegisto .form-control.not-empty + #lbl{
+    transform: translateY(-10px);
+}
+#asspos{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+}
+.form-step{
+    display: none;
+    transform-origin: top;
+    animation: animate .5s;
+}
+@keyframes animate {
+    from{
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1,1);
+        opacity: 1;
+    }
+}
+.form-step-active{
+    display: block;
+}
+.barraProgresso{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 6rem 0 6rem;
+}
+.barraProgresso::before, .progresso{
+    content: "";
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+    z-index: -1;
+}
+.progresso{
+    background-color: blue;
+    width: 0%;
+}
+.passo-progredido::after{
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 12px);
+    font-size: 13.6px;
+    color: #666;
+}
+.passo-progredido{
+    width: 25px;
+    height: 25px;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.passo-progredido::before{
+    counter-increment: step;
+    content: counter(step);
+}
+.passo-progredido-active{
+    background-color: blue;
+    color: #f3f3f3;
+}
